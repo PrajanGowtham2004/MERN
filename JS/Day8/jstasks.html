@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript Tasks</title>
+</head>
+<body>
+
+<script>
+
+    // TASK 1 – ELECTRICITY BILL CALCULATION
+
+    let customerName = "Prajan";
+    let unitsConsumed = 250;
+    let bill;
+
+    if (unitsConsumed <= 100) {
+        bill = unitsConsumed * 2;
+    }
+    else if (unitsConsumed <= 200) {
+        bill = (100 * 2) + ((unitsConsumed - 100) * 3);
+    }
+    else {
+        bill = (100 * 2) + (100 * 3) + ((unitsConsumed - 200) * 5);
+    }
+
+    document.write("Customer: " + customerName + "<br>");
+    document.write("Electricity Bill: ₹" + bill + "<br><br>");
+
+
+    // TASK 2 – ATM CASH WITHDRAWAL
+
+    let balance = 15000;
+    let withdrawAmount = 4000;
+
+    if (withdrawAmount <= 0) {
+        document.write("Error: Amount must be greater than 0<br>");
+    }
+    else if (withdrawAmount % 500 !== 0) {
+        document.write("Error: Amount must be a multiple of 500<br>");
+    }
+    else if (withdrawAmount > balance) {
+        document.write("Error: Insufficient balance<br>");
+    }
+    else {
+        balance = balance - withdrawAmount;
+        document.write("Withdrawal Successful<br>");
+        document.write("Remaining Balance: ₹" + balance + "<br>");
+    }
+
+    document.write("<br>");
+
+
+    // TASK 3 – EMPLOYEE LOGIN ATTEMPTS
+
+    let correctPin = 1234;
+    let enteredPin = 1234;
+
+    for (let attempt = 1; attempt <= 3; attempt++) {
+
+        if (enteredPin === correctPin) {
+            document.write("Login Successful<br>");
+            break;
+        }
+        else {
+            document.write("Incorrect PIN<br>");
+
+            if (attempt === 3) {
+                document.write("Account Blocked<br>");
+            }
+        }
+    }
+
+    document.write("<br>");
+
+
+    // TASK 4 – MULTIPLICATION BILL TABLE
+
+    let price = 250;
+
+    for (let quantity = 1; quantity <= 5; quantity++) {
+        let total = quantity * price;
+        document.write("Quantity " + quantity + " = ₹" + total + "<br>");
+    }
+
+    document.write("<br>");
+
+
+    // TASK 5 – SEAT BOOKING DISPLAY
+
+    for (let row = 1; row <= 3; row++) {
+
+        for (let seat = 1; seat <= 5; seat++) {
+            document.write("Row " + row + " - Seat " + seat + "<br>");
+        }
+
+    }
+
+    document.write("<br>");
+
+
+    // TASK 6 – DELIVERY CHARGE FUNCTION
+
+    function calculateDelivery(amount) {
+
+        if (amount >= 1000) {
+            return amount;
+        }
+        else if (amount >= 500) {
+            return amount + 50;
+        }
+        else {
+            return amount + 100;
+        }
+    }
+
+    document.write("Final Payable Amount: ₹" + calculateDelivery(750) + "<br><br>");
+
+
+    // TASK 7 – FIND HIGHEST SALES
+
+    let sales = [12000, 18000, 9500, 25000, 16000];
+
+    let highest = sales[0];
+
+    for (let i = 1; i < sales.length; i++) {
+
+        if (sales[i] > highest) {
+            highest = sales[i];
+        }
+
+    }
+
+    document.write("Highest Sales: ₹" + highest + "<br><br>");
+
+
+    // TASK 8 – PALINDROME ARRAY
+
+    let numbers = [1, 2, 3, 2, 1];
+    let isPalindrome = true;
+
+    for (let i = 0; i < numbers.length / 2; i++) {
+
+        if (numbers[i] !== numbers[numbers.length - 1 - i]) {
+            isPalindrome = false;
+            break;
+        }
+
+    }
+
+    if (isPalindrome) {
+        document.write("Palindrome<br><br>");
+    }
+    else {
+        document.write("Not Palindrome<br><br>");
+    }
+
+
+    // TASK 9 – STUDENT RESULT PROCESSING
+
+    let marks = [45, 78, 32, 90, 67];
+
+    let graceMarks = marks.map(function (mark) {
+        return mark + 5;
+    });
+
+    let passedMarks = graceMarks.filter(function (mark) {
+        return mark >= 50;
+    });
+
+    document.write("Marks after Grace: " + graceMarks + "<br>");
+    document.write("Marks 50 or above: " + passedMarks + "<br>");
+
+</script>
+
+</body>
+</html>
