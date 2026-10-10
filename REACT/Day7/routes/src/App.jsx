@@ -1,9 +1,18 @@
-import React from 'react'
+import NavBar from "./components/NavBar"
+import Login from "./pages/Login"
+import AppRoutes from "./route/AppRoutes"
 
 const App = () => {
   return (
-    <div>App</div>
-  )
+    
+    <>
+    <NavBar />
+    <Login />
+    {/* <AppRoutes /> */}
+    
+    </>
+
+ )
 }
 
 export default App
