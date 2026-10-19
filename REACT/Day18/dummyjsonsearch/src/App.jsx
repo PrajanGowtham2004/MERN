@@ -1,40 +1,77 @@
-import { useState, useEffect } from 'react'
 
-const App = () => {
+// import { useState, useEffect } from 'react'
 
-  const [data, setData] = useState([]);
+// const App = () => {
 
-  const fetchData = async () => {
-    const fetchingData = await fetch('https://dummyjson.com/products');
+//   const [data, setData] = useState([]);
+//   const [search, setSearch] = useState("");
 
-    const fetchsave = await fetchingData.json();
-    setData(fetchsave.products);
-  }
+//   const fetchData = async () => {
+//     const fetchingData = await fetch('https://jsonplaceholder.typicode.com/users');
+
+//     const fetchsave = await fetchingData.json();
+//     setData(fetchsave);
+//   }
+
+//   useEffect(() => {
+//     fetchData();
+//   }, []);
+
+//   const filteredData = data.filter((e) =>
+//     e.name.toLowerCase().includes(search.toLowerCase())
+//   );
+
+//   return (
+//     <>
+//       <div className='flex justify-center items-center'>
+//         <input
+//           type="text"
+//           placeholder='Search by name'
+//           value={search}
+//           onChange={(e) => setSearch(e.target.value)}
+//           className='border-2 border-black rounded-3xl m-5 p-2'
+//         />
+//       </div>
+
+//       <div>
+//         {filteredData.map((e) => (
+//           <div
+//             key={e.id}
+//             className='border-2 bg-amber-200 rounded-3xl border-black m-5 p-5 flex flex-col items-center justify-center'
+//           >
+//             <h1 className='font-bold text-xl'>{e.name}</h1>
+//             <p>{e.username}</p>
+//             <p>{e.email}</p>
+//             <p>{e.phone}</p>
+//             <p>{e.address.city}</p>
+//           </div>
+//         ))}
+
+//         {filteredData.length === 0 && (
+//           <p className='text-center text-red-500'>
+//             No users found
+//           </p>
+//         )}
+//       </div>
+//     </>
+//   )
+// }
+
+// export default App
+
+
+import { useState, useEffect } from "react";
+
+function App() {
+  const [count, setCount] = useState(0);
 
   useEffect(() => {
-    fetchData();
+    const interval = setInterval(() => {
+      setCount(prevCount => prevCount + 1);
+    }, 1000);
+
+    return () => clearInterval(interval);
   }, []);
-
-
-  return (
-    <>
-    <div className='flex justify-center items-center '>
-      <input type="text" placeholder='search' onChange={(e) => setData(e.target.value)} className='border-2 border-black rounded-3xl m-5 p-2' />
-    </div>
-    <div className=''>
-      {data.map((e) => (
-        <div key={e.id} className=' border-2 bg-amber-200 rounded-3xl border-black m-5 p-5 flex flex-col items-center justify-center'>
-          <h1>{e.title}</h1>
-          <img src={e.thumbnail} alt={e.title} className='w-40 h-40' /> 
-          <p>{e.description}</p>
-          <p>{e.price}</p>
-        </div>
-      ))}
-    </div>
-    
-    
-    </>
-  )
+  return <h1>Count: {count}</h1>;
 }
-
-export default App
+export default App;
