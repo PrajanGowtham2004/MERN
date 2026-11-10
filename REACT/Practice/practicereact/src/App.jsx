@@ -1,17 +1,18 @@
+import { useState } from 'react';
+
+
 const App = () => {
 
+  const [number, setNumber] = useState(0);
 
 
-
-
+  const handleclick = ()=>{setNumber((p) => p + 1)};
 
 
   return (
     <>
-    <input type="text" placeholder="Enter your name" />
-    
-    <button onClick={{}}>Submit</button> 
-    
+    <h1>{number}</h1>
+    <button onClick={handleclick}>Submit</button>
     </>
   )
 }
